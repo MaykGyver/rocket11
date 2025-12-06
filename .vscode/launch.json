@@ -5,17 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "rocket10",
+            "name": "rocket11",
             "type": "f5anything",
             "request": "launch",
-            "command": "sudo pipenv run python rocket10.py"
+            "command": "sudo pipenv run python rocket11.py"
         },
         
         {
-            "name": "Python Debugger: rocket10.py",
+            "name": "Python Debugger: rocket11.py",
             "type": "debugpy",
             "request": "launch",
-            "program": "rocket10.py",
+            "program": "rocket11.py",
             "console": "integratedTerminal"
         }
     ]

@@ -129,8 +129,8 @@ def main():
     print(f'Installation image found at {wim_path}')
     
     wim_info = WimInfo(wim_path)
-    if not all(image.name.startswith('Windows 10') and image.description.startswith('Windows 10') for image in wim_info.images):
-        print(f'{wim_path} does not look like a Windows 10 medium. Aborting.')
+    if not all(image.name.startswith('Windows 11') and image.description.startswith('Windows 11') for image in wim_info.images):
+        print(f'{wim_path} does not look like a Windows 11 medium. Aborting.')
         return -2
 
     provide_winget_package()
