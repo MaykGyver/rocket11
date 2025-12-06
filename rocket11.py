@@ -1,7 +1,6 @@
 import collections
 import os
 import pathlib
-import pyuac
 import re
 import requests
 import shutil
@@ -117,7 +116,6 @@ def provide_winget_package():
                     )
     print('winget package available.')
 
-@pyuac.main_requires_admin
 def main():
     for letter in string.ascii_uppercase:
         wim_path = pathlib.WindowsPath(f'{letter}:/sources/install.wim')

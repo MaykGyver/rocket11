@@ -8,7 +8,7 @@
             "name": "rocket11",
             "type": "f5anything",
             "request": "launch",
-            "command": "sudo pipenv run python rocket11.py"
+            "command": "pipenv install && sudo pipenv run python rocket11.py"
         },
         
         {

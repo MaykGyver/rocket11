@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pyuac = "*"
 pypiwin32 = "*"
 requests = "*"
 
@@ -12,4 +11,3 @@ requests = "*"
 
 [requires]
 python_version = "3.13"
-python_full_version = "3.13.5"
