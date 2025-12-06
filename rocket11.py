@@ -150,6 +150,8 @@ def main():
                     shutil.rmtree(
                         path=edge,
                         onexc=lambda function,path,exception: (
+                            subprocess.check_call(args=('takeown','/F',path)),  # todo : ux : reduce verbosity
+                            subprocess.check_call(args=('icacls',path,'/grant','Administrators:F','/T')),  # todo : ux : reduce verbosity
                             os.chmod(path, stat.S_IWRITE),
                             function(path),
                         ) if pathlib.Path(path).exists() else None
@@ -177,7 +179,10 @@ def main():
                     lambda p: (
                         p['state'] == 'Installed'
                         and not p['id'].startswith('Language.Basic')
+                        and not p['id'].startswith('Microsoft.Windows.Ethernet.Client')
                         and not p['id'].startswith('Microsoft.Windows.PowerShell')
+                        and not p['id'].startswith('Microsoft.Windows.Sense.Client')
+                        and not p['id'].startswith('Microsoft.Windows.Wifi.Client')
                         and not p['id'].startswith('Windows.Client.ShellComponents')
                     ),
                     re.finditer(
@@ -187,7 +192,7 @@ def main():
                     ),
                 ):
                     print(f'removing capability {capability['id']}...')
-                    subprocess.run(
+                    subprocess.run(  # todo : ux : reduce verbosity
                         args=(
                             'dism','/english',
                             '/remove-capability',
@@ -201,7 +206,6 @@ def main():
                 print('Demands detached.')
 
                 print('\n## Activating infinite potential...\n')
-                # todo : automate retrieval of winget from github
                 subprocess.run(
                     args=[
                         'dism','/english',
