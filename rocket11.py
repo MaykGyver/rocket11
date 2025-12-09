@@ -151,7 +151,7 @@ def main():
                         path=edge,
                         onexc=lambda function,path,exception: (
                             subprocess.check_call(args=('takeown','/F',path)),  # todo : ux : reduce verbosity
-                            subprocess.check_call(args=('icacls',path,'/grant',f"{os.environ['USERDOMAIN']}\\{os.environ['USERNAME']}:F")),  # todo : ux : reduce verbosity
+                            subprocess.check_call(args=('icacls',path,'/grant',f"{os.environ['USERDOMAIN']}\\{os.environ['USERNAME']}:F")),  # todo : ux : reduce verbosity
                             os.chmod(path, stat.S_IWRITE),
                             function(path),
                         ) if pathlib.Path(path).exists() else None
